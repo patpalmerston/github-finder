@@ -10,27 +10,40 @@ class App extends Component {
     users: [],
     loading: false
   };
+  // you can keep this initial user request to show up before the search. The default first 30. But it adds no functionality to the search itself.
 
-  async componentDidMount() {
-    // console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
+  // async componentDidMount() {
+  //   // console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
 
-    this.setState({ loading: true });
+  //   this.setState({ loading: true });
 
+  //   const res = await axios.get(
+  //     `https://api.github.com/users?client_id=${
+  //       process.env.REACT_APP_GITHUB_CLIENT_ID
+  //     }&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //   );
+
+  //   this.setState({ users: res.data, loading: false });
+  // }
+
+  // the actual method that searches github users
+  searchUsers = async text => {
+    // console.log(text);
     const res = await axios.get(
-      `https://api.github.com/users?client_id=${
+      `https://api.github.com/search/users?q=${text}&client_id=${
         process.env.REACT_APP_GITHUB_CLIENT_ID
       }&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
 
-    this.setState({ users: res.data, loading: false });
-  }
+    this.setState({ users: res.data.items, loading: false });
+  };
 
   render() {
     return (
       <div className='App'>
         <Navbar />
         <div className='container'>
-          <Search />
+          <Search searchUsers={this.searchUsers} />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>

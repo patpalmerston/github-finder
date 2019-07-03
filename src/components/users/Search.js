@@ -7,7 +7,9 @@ class Search extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.text);
+    // console.log(this.state.text);
+    this.props.searchUsers(this.state.text); //sends the form info to the main app component. Then feeds the text content as a prop to Search.js. From there make the method that called  searchUsers using the text from this input to search against.
+    this.setState({ text: '' });
   };
 
   onChange = e => {
