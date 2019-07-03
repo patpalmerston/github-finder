@@ -1,8 +1,6 @@
 import React from 'react';
 
-const UserItem = props => {
-  const { login, avatar_url, html_url } = props.user; // destructuring pulls these values out of the object/props inside the render so you dont have to use this.state in the return
-
+const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   return (
     <div className='card text-center'>
       <img
