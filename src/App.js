@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; // instead of using React.Component for class component you add the this to the import
 import Navbar from './components/layout/Navbar';
-import UserItem from './components/users/UserItem';
+import Users from './components/users/Users';
 import './App.css';
 
 class App extends Component {
@@ -8,7 +8,9 @@ class App extends Component {
     return (
       <div className='App'>
         <Navbar />
-        <UserItem />
+        <div className='container'>
+          <Users />
+        </div>
       </div>
     ); // We removed the props and used static default props on the Navbar component instead. Any props made here will override the static default props <Navbar title='Whatever' icon='fab fa-github' />
   }
