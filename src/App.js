@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; // instead of using React.Component for class component you add the this to the import
 import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
+import Search from './components/users/Search';
 import axios from 'axios';
 import './App.css';
 
@@ -11,7 +12,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
+    // console.log(process.env.REACT_APP_GITHUB_CLIENT_SECRET);
 
     this.setState({ loading: true });
 
@@ -29,6 +30,7 @@ class App extends Component {
       <div className='App'>
         <Navbar />
         <div className='container'>
+          <Search />
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
