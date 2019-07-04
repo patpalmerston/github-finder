@@ -9,14 +9,19 @@ class Search extends Component {
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
-    // console.log(this.state.text);
-    this.props.searchUsers(this.state.text); //sends the form info to the main app component. Then feeds the text content as a prop to Search.js. From there make the method that called  searchUsers using the text from this input to search against.
-    this.setState({ text: '' });
+    if (this.state.text === '') {
+      this.props.setAlert('Please enter something', 'light');
+    } else {
+      // console.log(this.state.text);
+      this.props.searchUsers(this.state.text); //sends the form info to the main app component. Then feeds the text content as a prop to Search.js. From there make the method that called  searchUsers using the text from this input to search against.
+      this.setState({ text: '' });
+    }
   };
 
   onChange = e => {
