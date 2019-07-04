@@ -16,6 +16,7 @@ class User extends Component {
   render() {
     const {
       name,
+      company,
       avatar_url,
       location,
       bio,
@@ -55,6 +56,48 @@ class User extends Component {
             <h1>{name}</h1>
             <p>Location: {location}</p>
           </div>
+          <div>
+            {bio && (
+              <Fragment>
+                <h3>Bio</h3>
+                <p>{bio}</p>
+              </Fragment>
+            )}
+            <a href={html_url} className='btn btn-dark my-1'>
+              Visit Github profile
+            </a>
+            <ul>
+              <li>
+                {login && (
+                  <Fragment>
+                    <strong>Username: </strong> {login}
+                  </Fragment>
+                )}
+              </li>
+
+              <li>
+                {company && (
+                  <Fragment>
+                    <strong>Company: </strong> {company}
+                  </Fragment>
+                )}
+              </li>
+
+              <li>
+                {blog && (
+                  <Fragment>
+                    <strong>Website: </strong> {blog}
+                  </Fragment>
+                )}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className='card text'>
+          <div className='badge badge-primary'>Follower: {followers}</div>
+          <div className='badge badge-success'>Following: {following}</div>
+          <div className='badge badge-light'>Public Repos: {public_repos}</div>
+          <div className='badge badge-dark'>Public Gists: {public_gists}</div>
         </div>
       </Fragment>
     );
