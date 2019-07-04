@@ -9,8 +9,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
     if (text === '') {
       setAlert('Please enter something', 'light');
     } else {
-      // console.log(this.state.text);
-      searchUsers(text); //sends the form info to the main app component. Then feeds the text content as a prop to Search.js. From there make the method that called  searchUsers using the text from this input to search against.
+      searchUsers(text);
       setText('');
     }
   };
