@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react'; // instead of using React.Component for class component you add the this to the import
+import React from 'react'; // instead of using React.Component for class component you add the this to the import
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
+
 import User from './components/users/User';
-import Search from './components/users/Search';
+import Home from './components/pages/Home';
+
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
-
+import NotFound from './components/pages/NotFound';
 import GithubState from './context/github/GithubState';
 import AlertState from './context/alert/AlertState';
 
@@ -22,18 +23,10 @@ const App = () => {
             <div className='container'>
               <Alert />
               <Switch>
-                <Route
-                  exact
-                  path='/'
-                  render={props => (
-                    <Fragment>
-                      <Search />
-                      <Users />
-                    </Fragment>
-                  )}
-                />
+                <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/user/:login' component={User} />
+                <Route component={NotFound} />
               </Switch>
             </div>
           </div>
